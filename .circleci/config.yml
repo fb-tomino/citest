@@ -16,7 +16,7 @@ jobs:
             ls -R force-app/
             mkdir -p tmp/force-app/main/default/
             mv force-app/main/default/staticresources tmp/force-app/main/default/
-            mkdir -p ../force-app/main/default/staticresources
+            mkdir -p force-app/main/default/staticresources
             ls -R force-app/
             ls -R tmp/
             cd tmp
