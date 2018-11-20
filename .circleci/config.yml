@@ -11,7 +11,7 @@ jobs:
             mkdir -p tmp/force-app/main/default/staticresources
             git diff --name-only HEAD^ > tmp/diffs
 
-            find force-app/main/default/staticresources -name bundle* -mindepth 1 | xargs -n1 dirname > targets
+            find force-app/main/default/staticresources -mindepth 1 -name bundle* | xargs -n1 dirname > targets
             cat targets | while read line
             do
               mv -n -t tmp/force-app/main/default/staticresources $line $line.resource-meta.xml
