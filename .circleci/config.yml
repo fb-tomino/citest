@@ -16,6 +16,8 @@ jobs:
             ls -R force-app/
             mkdir -p tmp/force-app/main/default/
             mv force-app/main/default/staticresources tmp/force-app/main/default/
+            mkdir -p ../force-app/main/default/staticresources
+            ls -R force-app/
             ls -R tmp/
             cd tmp
             git diff --name-only HEAD^ | while read line
@@ -23,7 +25,6 @@ jobs:
               if [[ $line =~ staticresources ]];
               then
                 echo $line
-                mkdir -p ../force-app/main/default/staticresources
                 mv $line ../force-app/main/default/staticresources/
               fi
             done
