@@ -8,12 +8,12 @@ jobs:
       - run:
           name: Greeting
           command: |
-            source ${BASH_ENV}
             echo Hello, world.
-            echo ${CIRCLE_BRANCH}
-            echo ${CIRCLE_COMPARE_URL}
-            echo ${CIRCLE_PULL_REQUEST}
-            echo ${CIRCLE_PR_NUMBER}
+            echo $CIRCLE_BRANCH
+            echo $CIRCLE_COMPARE_URL
+            echo $CIRCLE_PULL_REQUEST
+            echo $CIRCLE_PR_NUMBE
+            git diff --name-only HEAD^
 
       - run:
           name: Print the Current Time
