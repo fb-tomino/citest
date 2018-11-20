@@ -18,9 +18,9 @@ jobs:
             cd tmp
             git diff --name-only HEAD^ | while read line
             do
-              echo $line
               if [[ $line =~ staticresources ]];
               then
+                echo $line
                 mkdir -p ../force-app/main/default/staticresources
                 mv $line ../force-app/main/default/staticresources/
               fi
