@@ -14,10 +14,14 @@ jobs:
             echo $CIRCLE_PULL_REQUEST
             echo $CIRCLE_PR_NUMBE
             git diff --name-only HEAD^ | while read line
+            mkdir -p tmp/force-app/main/default/
+            mv force-app/main/default/staticresources tmp/force-app/main/default/
+            cd tmp
             do
               echo $line
               if [[ $line =~ staticresources ]];
               then
-                echo hit
+                mv $line force-app/main/default/staticresources/
               fi
             done
+            ls -R force-app/
