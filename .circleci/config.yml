@@ -13,8 +13,8 @@ jobs:
             echo $CIRCLE_COMPARE_URL
             echo $CIRCLE_PULL_REQUEST
             echo $CIRCLE_PR_NUMBE
-            git diff --name-only HEAD^ > diffs
             mkdir -p tmp/force-app/main/default/
+            git diff --name-only HEAD^ > tmp/diffs
             mv force-app/main/default/staticresources tmp/force-app/main/default/
             mkdir -p force-app/main/default/staticresources
             cd tmp
