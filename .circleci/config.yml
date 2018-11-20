@@ -2,17 +2,12 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/buildpack-deps:curl-browsers-legacy
+      - image: dancinllama/dockerdx
     steps:
       - checkout
       - run:
           name: Greeting
           command: |
-            echo Hello, world.
-            echo $CIRCLE_BRANCH
-            echo $CIRCLE_COMPARE_URL
-            echo $CIRCLE_PULL_REQUEST
-            echo $CIRCLE_PR_NUMBE
             mkdir -p tmp/force-app/main/default/
             git diff --name-only HEAD^ > tmp/diffs
             mv force-app/main/default/staticresources tmp/force-app/main/default/
