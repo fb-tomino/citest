@@ -13,12 +13,9 @@ jobs:
             echo $CIRCLE_COMPARE_URL
             echo $CIRCLE_PULL_REQUEST
             echo $CIRCLE_PR_NUMBE
-            ls -R force-app/
             mkdir -p tmp/force-app/main/default/
             mv force-app/main/default/staticresources tmp/force-app/main/default/
             mkdir -p force-app/main/default/staticresources
-            ls -R force-app/
-            ls -R tmp/
             cd tmp
             git diff --name-only HEAD^ | while read line
             do
@@ -28,4 +25,5 @@ jobs:
                 mv $line ../force-app/main/default/staticresources/
               fi
             done
+            cd ..
             ls -R force-app/
