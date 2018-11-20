@@ -8,6 +8,7 @@ jobs:
       - run:
           name: Greeting
           command: |
+            source ${BASH_ENV}
             echo Hello, world.
             echo ${CIRCLE_BRANCH}
             echo ${CIRCLE_COMPARE_URL}
