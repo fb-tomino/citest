@@ -23,3 +23,4 @@ jobs:
             done
             cd ..
             ls -R force-app/
+            sfdx force:source:convert -d metadata
