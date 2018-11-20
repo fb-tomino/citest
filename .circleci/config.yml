@@ -16,5 +16,8 @@ jobs:
             git diff --name-only HEAD^ | while read line
             do
               echo $line
-              echo [ -z "${line##*staticresources*}" ]
+              if [[ $line =~ staticresources ]];
+              then
+                echo hit
+              fi
             done
