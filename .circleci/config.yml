@@ -21,7 +21,8 @@ jobs:
               echo $line
               if [[ $line =~ staticresources ]];
               then
-                mv -p $line ../force-app/main/default/staticresources/
+                mkdir -p ../force-app/main/default/staticresources
+                mv $line ../force-app/main/default/staticresources/
               fi
             done
             ls -R force-app/
