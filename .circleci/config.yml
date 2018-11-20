@@ -13,12 +13,12 @@ jobs:
             echo $CIRCLE_COMPARE_URL
             echo $CIRCLE_PULL_REQUEST
             echo $CIRCLE_PR_NUMBE
-            git diff --name-only HEAD^
+            git diff --name-only HEAD^ > diffs
             mkdir -p tmp/force-app/main/default/
             mv force-app/main/default/staticresources tmp/force-app/main/default/
             mkdir -p force-app/main/default/staticresources
             cd tmp
-            git diff --name-only HEAD^ | while read line
+            cat diffs | while read line
             do
               if [[ $line =~ staticresources ]];
               then
