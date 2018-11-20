@@ -15,10 +15,13 @@ jobs:
             cd tmp
             cat diffs | while read line
             do
-              if [[ $line =~ staticresources ]];
+              if [[ $line =~ bundle ]];
               then
                 echo $line
-                mv $line ../force-app/main/default/staticresources/
+                export base=`dirname $line`
+                echo $base
+                cp -r $base ../force-app/main/default/staticresources/
+                cp ${base}.resource-meta.xml ../force-app/main/default/staticresources/
               fi
             done
             cd ..
