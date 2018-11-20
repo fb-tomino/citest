@@ -22,13 +22,10 @@ jobs:
             do
               if [[ $line =~ bundle ]];
               then
-                echo $line
                 export base=`dirname $line`
-                echo $base
                 cp -r $base ../force-app/main/default/staticresources/
                 cp ${base}.resource-meta.xml ../force-app/main/default/staticresources/
               fi
             done
             cd ..
-            ls -R force-app/
             sfdx force:source:convert -d metadata
