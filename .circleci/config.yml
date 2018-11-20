@@ -8,10 +8,15 @@ jobs:
       - run:
           name: Greeting
           command: |
-            mkdir -p tmp/force-app/main/default/
+            mkdir -p tmp/force-app/main/default/staticresources
             git diff --name-only HEAD^ > tmp/diffs
-            mv force-app/main/default/staticresources tmp/force-app/main/default/
-            mkdir -p force-app/main/default/staticresources
+
+            find force-app/main/default/staticresources -name bundle* -mindepth 1 | xargs -n1 dirname > targets
+            cat targets | while read line
+            do
+              mv -n -t tmp/force-app/main/default/staticresources $line $line.esource-meta.xml
+            done
+
             cd tmp
             cat diffs | while read line
             do
