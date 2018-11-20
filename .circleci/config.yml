@@ -9,8 +9,11 @@ jobs:
           name: Greeting
           command: |
             echo Hello, world.
-            echo $CIRCLE_BRANCH
-            echo $CIRCLE_COMPARE_URL
+            echo ${CIRCLE_BRANCH}
+            echo ${CIRCLE_COMPARE_URL}
+            echo ${CIRCLE_PULL_REQUEST}
+            ecbo ${CIRCLE_PR_NUMBER}
+
       - run:
           name: Print the Current Time
           command: date
