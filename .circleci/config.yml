@@ -13,10 +13,8 @@ jobs:
             echo $CIRCLE_COMPARE_URL
             echo $CIRCLE_PULL_REQUEST
             echo $CIRCLE_PR_NUMBE
-            git diff --name-only HEAD^ > diffs
-
-      - run:
-          name: Print the Current Time
-          command: |
-            cat diffs
-            date
+            git diff --name-only HEAD^ | while read line
+            do
+              echo $line
+              echo [ -z "${line##*staticresources*}" ]
+            done
