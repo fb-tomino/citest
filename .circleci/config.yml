@@ -3,6 +3,9 @@ jobs:
   build:
     docker:
       - image: dancinllama/dockerdx
+    branches:
+      only:
+       - dev
     steps:
       - checkout
       - run:
