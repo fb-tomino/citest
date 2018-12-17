@@ -9,7 +9,7 @@ jobs:
           name: Greeting
           command: |
             mkdir -p tmp/force-app/main/default/staticresources
-            git diff --name-only HEAD^ > tmp/diffs
+            git log --merges --first-parent -n 2 | grep commit | sed 's/commit //g' | tr '\n' ' ' | xargs | sed 's/ /../g' | xargs git diff --name-only > tmp/diffs
 
             find force-app/main/default/staticresources -mindepth 1 -name bundle* | xargs -n1 dirname > targets
             cat targets | while read line
