@@ -3,6 +3,9 @@ jobs:
   build:
     docker:
       - image: debian:stretch
+    branches:
+      only:
+       - master
     steps:
       - checkout
       - run:
@@ -13,6 +16,8 @@ jobs:
             echo ${CIRCLE_COMPARE_URL}
             echo ${CIRCLE_PULL_REQUEST}
             echo ${CIRCLE_PR_NUMBER}
+            git log --merges --first-parent -n 2 | grep commit | sed 's/commit //g' | tr '\n' ' ' | xargs | sed 's/ /../g' | xargs git diff --name-only > tmp/diffs
+            echo tmp/diffs
 
       - run:
           name: Print the Current Time
